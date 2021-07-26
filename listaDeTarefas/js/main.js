@@ -64,7 +64,7 @@ btnTarefa.addEventListener('click', function(e) {
     createTarefa(inputTarefa.value);
 });
 
-
+//deleta tarefa criada
 document.addEventListener('click', function(e){
     const elemento = e.target;
 
