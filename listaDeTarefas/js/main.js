@@ -13,13 +13,11 @@ function createLi(){
     const li = document.createElement('li');
     return li;
 }
-
 // chama a funçao createTarefa quando a tecla enter (keycode 13) e precionada
-inputTarefa.addEventListener('keypress', function(e){
+inputTarefa.addEventListener('keypress', (e) => {
     if (e.keyCode === 13){ //verifica se enter foi precionada
         if (!inputTarefa.value) return; // verifica se o input esta vazio
         createTarefa(inputTarefa.value);
-
     }
 });
 /**limpa o input e coloca em em focus 
@@ -29,7 +27,6 @@ function limpaInput(){
     inputTarefa.value=''; 
     inputTarefa.focus();
 }
-
 /**
  * cria um button dentro do li 
  * @param {*} li 
@@ -41,8 +38,6 @@ function createBtnApagar(li){
     btnApagar.setAttribute('class','apagar'); 
     btnApagar.setAttribute('title','apagar essa tarefa');
     li.appendChild(btnApagar); // crescenta o botton como um filho  dentro do li
-
-
 }
 /**
  * cria nova tarefa
@@ -56,8 +51,7 @@ function createTarefa(textoInput){
     limpaInput();
     createBtnApagar(li);
     salvarTarefas();// a
-}
-
+} 
 // chama a funçao createTarefa quando clicar no inputTarefa
 btnTarefa.addEventListener('click', function(e) {
     if (!inputTarefa.value) return;
