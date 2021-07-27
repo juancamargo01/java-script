@@ -1,17 +1,18 @@
 // Capturar evento de submit do formulário
 const form = document.querySelector('#formulario');
+
 /** previne default do submit para nao dar reload 
  * na pagina quando clicar no botao enviar
  * 
  */
 form.addEventListener('submit', function (e) {
-     e.preventDefault();
-     const inputPeso = e.target.querySelector('#peso');
+  e.preventDefault();
+  const inputPeso = e.target.querySelector('#peso');
   const inputAltura = e.target.querySelector('#altura');
 
   const peso = Number(inputPeso.value);
   const altura = Number(inputAltura.value);
-  //
+    //
   if (!peso) {
     setResultado('Peso inválido', false);
     return;
@@ -29,12 +30,14 @@ form.addEventListener('submit', function (e) {
 
   setResultado(msg, true);
 });
+
+
 /**cria um lista com paramentros do imc e verifica o nivel do imc
  * 
  * @param {*} imc 
  * @returns 
  */
-function getNivelImc(imc) {
+function getNivelImc (imc) {
   const nivel = ['Abaixo do peso', 'Peso normal', 'Sobrepeso',
     'Obesidade grau 1', 'Obesidade grau 2', 'Obesidade grau 3'];
 
@@ -51,29 +54,26 @@ function getNivelImc(imc) {
  * @param {*} altura 
  * @returns 
  */
-function getImc(peso, altura) {
+function getImc (peso, altura) {
   const imc = peso / altura ** 2;
   return imc.toFixed(2);
 }
 
-
 /**cria um elemento <p> no html
  * 
- * @returns 
+ * @returns p
  */
-function criaP() {
+function criaP () {
   const p = document.createElement('p');
   return p;
 }
-
-
 
 /**seta o resultado e verifica se é valido 
  * 
  * @param {*} msg 
  * @param {*} isValid 
  */
-function setResultado(msg, isValid) {
+function setResultado (msg, isValid) {
   const resultado = document.querySelector('#resultado');
   resultado.innerHTML = '';
 
