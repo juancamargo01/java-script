@@ -14,7 +14,7 @@ function createLi(){
     return li;
 }
 // chama a funçao createTarefa quando a tecla enter (keycode 13) e precionada
-inputTarefa.addEventListener('keypress', (e) => {
+inputTarefa.addEventListener('keypress', function (e)  {
     if (e.keyCode === 13){ //verifica se enter foi precionada
         if (!inputTarefa.value) return; // verifica se o input esta vazio
         createTarefa(inputTarefa.value);
@@ -32,12 +32,12 @@ function limpaInput(){
  * @param {*} li 
  */
 function createBtnApagar(li){
-    li.innerHTML += ''; //concatena com oq ja existe dentro do li
-    const btnApagar = document.createElement('button'); // cria o elemnto html para variavel
+    li.innerText += ' '; //concatena com oq ja existe dentro do li
+    const btnApagar = document.createElement('button');
     btnApagar.innerText = 'Delete'; // leva o elemento criado para html
     btnApagar.setAttribute('class','apagar'); 
-    btnApagar.setAttribute('title','apagar essa tarefa');
-    li.appendChild(btnApagar); // crescenta o botton como um filho  dentro do li
+    btnApagar.setAttribute('title','Apagar essa tarefa');
+    li.appendChild(btnApagar); // acrescenta o button como um filho  dentro do li
 }
 /**
  * cria nova tarefa
@@ -46,11 +46,11 @@ function createBtnApagar(li){
  */
 function createTarefa(textoInput){    
     const li = createLi();
-    li.innerHTML = textoInput;
+    li.innerText = textoInput;
     tarefas.appendChild(li);
     limpaInput();
     createBtnApagar(li);
-    salvarTarefas();// a
+    salvarTarefas();
 } 
 // chama a funçao createTarefa quando clicar no inputTarefa
 btnTarefa.addEventListener('click', function(e) {
@@ -74,28 +74,24 @@ function salvarTarefas(){
     const liTarefas = tarefas.querySelectorAll('li');
     const  listaDeTarefas = [];
     
-    for (let tarefa of liTarefas){
-        let tarefaTexto = tarefa.innerHTML;
-        tarefaTexto = tarefaTexto.replace('Apagar', '').trim();
+    for (let tarefa of liTarefas) {
+        let tarefaTexto = tarefa.innerText;
+        tarefaTexto = tarefaTexto.replace('Delete', '').trim(); // remove o botao duplicado no reload da pagina
         listaDeTarefas.push(tarefaTexto);
-    }
+      }
     // converte o array para string json
     const tarefasJSON = JSON.stringify(listaDeTarefas);
     localStorage.setItem('tarefas', tarefasJSON);
-    
-
-}
+    }
 /**retorna para array o json
  * 
  */
-function adicionaTarefasSalvas(){
+ function adicionaTarefasSalvas() {
     const tarefas = localStorage.getItem('tarefas');
     const listaDeTarefas = JSON.parse(tarefas);
-    
-    for (let tarefa of listaDeTarefas){
-        createTarefa(tarefa);
+  
+    for(let tarefa of listaDeTarefas) {
+      createTarefa(tarefa);
     }
-}
-
-
-adicionaTarefasSalvas();
+  }
+  adicionaTarefasSalvas();
