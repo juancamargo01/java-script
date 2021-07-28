@@ -1,6 +1,6 @@
 // criando claculadora  usando constructor function
 
-function criaCalculadora (){    
+function Calculadora (){    
     //captura os elementos do html q esta na com a classe display
     this.display = document.querySelector('.display'), 
     
@@ -80,5 +80,5 @@ function criaCalculadora (){
 }
 
 // criando calculadora
-const calculadora =  new criaCalculadora();
+const calculadora =  new Calculadora();
 calculadora.inicia();
