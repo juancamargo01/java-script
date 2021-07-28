@@ -34,7 +34,7 @@ function limpaInput(){
 function createBtnApagar(li){
     li.innerHTML += ''; //concatena com oq ja existe dentro do li
     const btnApagar = document.createElement('button'); // cria o elemnto html para variavel
-    btnApagar.innerHTML = 'Delete'; // leva o elemento criado para html
+    btnApagar.innerText = 'Delete'; // leva o elemento criado para html
     btnApagar.setAttribute('class','apagar'); 
     btnApagar.setAttribute('title','apagar essa tarefa');
     li.appendChild(btnApagar); // crescenta o botton como um filho  dentro do li
@@ -96,4 +96,6 @@ function adicionaTarefasSalvas(){
         createTarefa(tarefa);
     }
 }
+
+
 adicionaTarefasSalvas();
