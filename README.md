@@ -1,4 +1,4 @@
 # java-script
 
-coletania de pequenos programas em Javacript
+coletânia de pequenos programas em Javacript
  
